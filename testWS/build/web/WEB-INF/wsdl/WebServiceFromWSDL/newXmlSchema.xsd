@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/newXmlSchema"
+    xmlns:tns="http://xml.netbeans.org/schema/newXmlSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="Adresa">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Obec">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Ulica">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Cislo" type="xsd:int"></xsd:element>
+                <xsd:element name="PSC">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:pattern value="[0-9]{5}"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Student">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="OsobneCislo">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Meno">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Priezvisko">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="DatumNarodenia" type="xsd:date"></xsd:element>
+                <xsd:element name="Email">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element ref="tns:Adresa"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="UcetAIS">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="idUctu">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Typ">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element ref="tns:Student"/>
+                <xsd:element name="Heslo">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="DatumExpiracieHesla" type="xsd:date"></xsd:element>
+                <xsd:element ref="tns:Predmet" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Predmet">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="idPredmetu" type="xsd:ID"></xsd:element>
+                <xsd:element name="Nazov">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Odbor">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="PocetKreditov" type="xsd:int"></xsd:element>
+                <xsd:element name="Zaciatok" type="xsd:date"></xsd:element>
+                <xsd:element name="CasPrednasok">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="MiestnostPrednasok">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="MiestnostCviceni">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Prednasajuci">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element ref="tns:Ucitel"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="Cviciaci">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element ref="tns:Ucitel" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Ucitel">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="OsobneCislo" type="xsd:ID"></xsd:element>
+                <xsd:element name="Meno">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Priezvisko">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Email">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="Prednasky" type="xsd:IDREFS"></xsd:element>
+                <xsd:element name="Cvicenia" type="xsd:IDREFS"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="RegistraciaRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="idUctu">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="idPrednasky">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string"/>
+                    </xsd:simpleType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="RegistraciaResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="tns:UcetAIS"/>
+                <xsd:element ref="tns:Predmet"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/WSDL/wsdl/RegistraciaWSDL" xmlns:ns="http://xml.netbeans.org/schema/newXmlSchema" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" name="RegistraciaWSDL" targetNamespace="http://j2ee.netbeans.org/wsdl/WSDL/wsdl/RegistraciaWSDL">
+    <types>
+        <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/WSDL/wsdl/RegistraciaWSDL">
+            <xsd:import namespace="http://xml.netbeans.org/schema/newXmlSchema" schemaLocation="http://localhost:8080/testWS/RegistraciaWSDLService?xsd=1"/>
+        </xsd:schema>
+    </types>
+    <message name="RegistraciaWSDLOperationRequest">
+        <part name="input" element="ns:RegistraciaRequest"/>
+    </message>
+    <message name="RegistraciaWSDLOperationResponse">
+        <part name="output" element="ns:RegistraciaResponse"/>
+    </message>
+    <portType name="RegistraciaWSDLPortType">
+        <operation name="RegistraciaWSDLOperation">
+            <input name="input1" message="tns:RegistraciaWSDLOperationRequest"/>
+            <output name="output1" message="tns:RegistraciaWSDLOperationResponse"/>
+        </operation>
+    </portType>
+    <binding name="RegistraciaWSDLBinding" type="tns:RegistraciaWSDLPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="RegistraciaWSDLOperation">
+            <soap:operation/>
+            <input name="input1">
+                <soap:body use="literal"/>
+            </input>
+            <output name="output1">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="RegistraciaWSDLService">
+        <port name="RegistraciaWSDLPort" binding="tns:RegistraciaWSDLBinding">
+            <soap:address location="http://localhost:8080/testWS/RegistraciaWSDLService"/>
+        </port>
+    </service>
+    <plnk:partnerLinkType name="RegistraciaWSDL">
+        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes. 
+In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
+A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
+        <plnk:role name="RegistraciaWSDLPortTypeRole" portType="tns:RegistraciaWSDLPortType"/>
+    </plnk:partnerLinkType>
+</definitions>
